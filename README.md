@@ -1,4 +1,4 @@
-# Olivers-R-Scripts
+# Nucleosome Positioning Analysis Tools
 Post-processing and stats for chromatin structures
 
 **Using The Scripts**
