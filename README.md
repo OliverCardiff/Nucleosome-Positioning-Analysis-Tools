@@ -23,7 +23,7 @@ R Pre-Reqs: Hmisc, nnet
 
 &nbsp;
 
-####`StructureMax(MeanSample, PeakL, PeakR, ..)`
+#### `StructureMax(MeanSample, PeakL, PeakR, ..)`
 
 Iteratively adjusts the alignment of each chromatin region to obtain the most-structured representation of cumulative nucleosome positions. Each region is first spline-interpolated to a much higher resolution, a range of potential shifts are then tested on that region.
 &nbsp;
@@ -59,7 +59,7 @@ The 'myShifts' object is then passed to the following functions:
 &nbsp;
 
 
-####`PlotStructureMax(MeanSample, Shifts, ..)`
+#### `PlotStructureMax(MeanSample, Shifts, ..)`
 
 Plots the results of 
 
@@ -86,7 +86,7 @@ A graph of the structural maximum alignments, including the pre-aligned trace. T
 
 &nbsp;
 
-####`ApplyStructMax(Shifts, Sample, ..)`
+#### `ApplyStructMax(Shifts, Sample, ..)`
 
 Applies the alignments discovered in `StructureMax` to another sample.
 
@@ -110,7 +110,7 @@ The left or right struct. max aligned version of a sample.
 
 &nbsp;
 
-####`ApplyDualStructMax(Shifts, Sample)`
+#### `ApplyDualStructMax(Shifts, Sample)`
 
 Applies both left and right hand structural maximum alignments, and merges the two region-sets at the mid-point. Useful for doing bootstrapping stats tests on the full aligned structures.
 
@@ -132,7 +132,7 @@ A matrix, equal in dimensions to 'Sample', containing the left half of the left-
 
 &nbsp;
 
-####`SaveShifts(Shifts, prefix)`
+#### `SaveShifts(Shifts, prefix)`
 
 Utility function to save the alignment shifts object to file, to be re-loaded later. Shifts saved and re-loaded in the way CANNOT be used with `PlotStructureMax`
 
@@ -155,7 +155,7 @@ A file containing alignment shift data that can be loaded later.
 &nbsp;
 
 
-####`LoadShifts(filename)`
+#### `LoadShifts(filename)`
 
 Utility function to re-load the alignment shifts from file. Shifts saved and re-loaded in the way CANNOT be used with `PlotStructureMax`
 
@@ -176,7 +176,7 @@ A Shifts object, that can be used with `ApplyStructMax` and `ApplyDualStructMax`
 &nbsp;
 
 
-####`FindPeaks(meanSample)`
+#### `FindPeaks(meanSample)`
 
 Utility function to assist in the identification of -1 and +1 peaks for structural maximum alignment. Searches for peaks around the centre of the region.
 
@@ -199,7 +199,7 @@ A short vector containing the indices of peaks found near the centre of the regi
 
 ___
 
-##Individual Models + Rank Groups and Clustering functions
+## Individual Models + Rank Groups and Clustering functions
 Script: IndividualModels.R
 
 R Pre-Reqs: plotrix, boot, RColorBrewer, plotrix, fields
@@ -208,7 +208,7 @@ R Pre-Reqs: plotrix, boot, RColorBrewer, plotrix, fields
 &nbsp;
 
 
-####`MakeIndividualModels(binSize=10, ...)`
+#### `MakeIndividualModels(binSize=10, ...)`
 
 Primary function that Builds a model of variation for each bin from replicates, and processes the statistical significance of the variation found in a single mutant sample. This can take several hours. The efficiency is O(n^2), where n is the number of regions. It is suggested that StructureMax may be used to create optimally structured alignments of regions before running this function.
 
@@ -238,7 +238,7 @@ This list is then passed to the following functions to visualise and test the mo
 
 &nbsp;
 
-####`PlotIndividualModelTest(results, save, prefix)`
+#### `PlotIndividualModelTest(results, save, prefix)`
 
 This function creates a visualisation of the p-values achieved by all regions when tested under the model. Each graph shows half of the entire vertically sorted set of p-values for each sample. This is useful to look at, it shows which regions had the highest variation in the mutant, and how well the modelling process worked for the given replicates. 
 
@@ -259,7 +259,7 @@ A graph that shows each of the input samples tested under the model. In the case
 &nbsp;
 
 &nbsp;
-####`PlotMultiTestCorrection(results, save, prefix)`
+#### `PlotMultiTestCorrection(results, save, prefix)`
 
 This function shows the level of significance achieved by the entire mutant sample when the maximum significance of the re-tested replicates is used as a multiple testing correction. 
 
@@ -280,7 +280,7 @@ A graph showing three distributions of p-values accross the feature region. Thes
 &nbsp;
 
 &nbsp;
-####`PlotAllRegionGraphs(prefix, results, ...)`
+#### `PlotAllRegionGraphs(prefix, results, ...)`
 
 This function creates graphs for all the regions used in the samples. This is a two-part plot including the levels for each sample, and the sigificance of the mutant deviation. It is highly reccommended to create a new folder for the output. 
 
@@ -301,7 +301,7 @@ One graph per region. If there are 4000 regions, there will be 4000 graphs - it 
 &nbsp;
 
 &nbsp;
-####`PlotTopRankMutant(indexes, division, results, ...)`
+#### `PlotTopRankMutant(indexes, division, results, ...)`
 
 This function selects a specific range of base-pairs around a feature and ranks regions based on the significance of the changes found in the mutant sample. The top 'rank-group' is then displayed as a graph. The number of rank-groups is determined by 'division'. If it is 5, then the top rank group that is displayed will be the top 20% of the set for the given ranking process. If it is 10, then it will be 10%.
 All graphs created by this function are automatically processed via a bootstrap signifiance testing method.
@@ -324,7 +324,7 @@ A graph showing the mean levels of most significantly different mutant regions, 
 &nbsp;
 
 &nbsp;
-####`PlotAllRankGraphs(indexes, division, FilePrefix, results, ...)`
+#### `PlotAllRankGraphs(indexes, division, FilePrefix, results, ...)`
 
 This function is the full version of `PlotTopRankMutant` - the functionality is the same, it's purpose is to generate all rank-group graphs. These are useful to compare the difference between the lowest and highest rank groups.
 All graphs created by this function are automatically processed via a bootstrap signifiance testing method.
@@ -349,7 +349,7 @@ A set of pdfs, equal in number to 'division'. These are in the same format as th
 
 &nbsp;
 
-####`PlotSumSquares(results, MaxNumber)`
+#### `PlotSumSquares(results, MaxNumber)`
 
 This is a utility function to assist in the cluster number determination process for kmeans clustering. The user ought to look for the 'knee' on the graph - this is the number which theoretically represents the optimally structured division of the set in terms of cluster counts. Clusters are created based on regions that share similar patterns of mutant variation.
 
@@ -369,7 +369,7 @@ A Sum-of-squares graph. Each point is described as x = k (number of clusters), y
 &nbsp;
 
 &nbsp;
-####`ClusterRegions(results, clusters)`
+#### `ClusterRegions(results, clusters)`
 
 Once the k value has been determined with `PlotSumSquares` this simple wrapper will run the kmeans function and return a 'kmeans' object. 
 
@@ -389,7 +389,7 @@ A 'kmeans' object. This is the standard output created by R's kmeans function. I
 &nbsp;
 
 &nbsp;
-####`PlotOneCluster(kclusters, ClusterNumber, ...)`
+#### `PlotOneCluster(kclusters, ClusterNumber, ...)`
 
 This function plots the cumulative levels of chromatin structure from one specific cluster - determined by the `ClusterRegions` function. This should show one particular type of mutant variation - if there is enough structure to the set of mutant variation to justify clustering.
 All graphs created by this function are automatically processed via a bootstrap signifiance testing method.
@@ -411,7 +411,7 @@ A single graph showing the cumulative variation of the mutant in the selected cl
 &nbsp;
 
 &nbsp;
-####`PlotAllClusters(kclusters, prefix, ...)`
+#### `PlotAllClusters(kclusters, prefix, ...)`
 
 This is the full version of `PlotOneCluster`. It generated comparison graphs for all clusters created in `ClusterRegions`.
 All graphs created by this function are automatically processed via a bootstrap signifiance testing method.
@@ -433,7 +433,7 @@ Graphs showing the cumulative variation of the mutant in each clusters, with the
 &nbsp;
 
 &nbsp;
-####`SaveIndividualModel(results, prefix)`
+#### `SaveIndividualModel(results, prefix)`
 
 Since the time and computing requirements for running `MakeIndividualModels` can be quite high, it is recommended that this function be run to save the results in the case of very large region sets (10,000+).
 
@@ -453,7 +453,7 @@ A single text file containing all the modelling results - can be reloaded.
 &nbsp;
 
 &nbsp;
-####`LoadIndividualModel(fileName)`
+#### `LoadIndividualModel(fileName)`
 
 This function can load the model output back into R, so long as it was saved with `SaveIndividualModel`.
 
