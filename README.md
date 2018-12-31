@@ -79,6 +79,8 @@ Output:
 
 A graph of the structural maximum alignments, including the pre-aligned trace. This also shows the relationship between the structural maximum and the central point of the region of interest. Usually this is the 'Transcription Start Site'.
 
+![StructureMax](https://github.com/OliverCardiff/Nucleosome-Positioning-Analysis-Tools/Imgs/LRStructureMax.png)
+
 &nbsp;
 
 ### `ApplyStructMax(Shifts, Sample, ..)`
