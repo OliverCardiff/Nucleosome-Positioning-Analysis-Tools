@@ -12,6 +12,8 @@ Then: source("ScriptName.R")
 
 Specific Functions are described below.
 
+![StructureMax](https://github.com/OliverCardiff/Nucleosome-Positioning-Analysis-Tools/blob/master/Imgs/RainbowGraph.png)
+
 ___
 
 ## Structural Max Alignments
@@ -264,6 +266,8 @@ Output:
 
 A graph showing three distributions of p-values accross the feature region. These are the Replicate Maximum, the Mutant, and the Corrected Mutant. The replicate maximum is essentially the set of levels that are used to correct the mutant significances.
 
+![StructureMax](https://github.com/OliverCardiff/Nucleosome-Positioning-Analysis-Tools/blob/master/Imgs/MAXV3Sub.png)
+
 &nbsp;
 
 ### `PlotAllRegionGraphs(prefix, results, ...)`
@@ -283,6 +287,8 @@ PlotAllRegionGraphsfunction("Regions/", results, Rep1, Rep2, Rep3, Mutant)
 Output:
 
 One graph per region. If there are 4000 regions, there will be 4000 graphs - it is reccommended to make a separate directory. This allows closer investigation of the significance levels for any given region. Particularly useful if there are a few regions of interest which bear closer examination. Your input matrix row names will be used for file names, and in the graph titles.
+
+![StructureMax](https://github.com/OliverCardiff/Nucleosome-Positioning-Analysis-Tools/blob/master/Imgs/ADH2.png)
 
 &nbsp;
 
